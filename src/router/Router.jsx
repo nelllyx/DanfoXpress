@@ -1,7 +1,6 @@
 import Landing from '../pages/Landing.jsx'
 import Login from '../pages/Login.jsx'
 import Signup from '../pages/Signup.jsx'
-import TailwindTest from '../pages/TailwindTest.jsx'
 import { usePathname } from './usePathname.js'
 
 function NotFound({ pathname }) {
@@ -28,8 +27,6 @@ export default function Router() {
       return <Signup />
     case '/login':
       return <Login />
-    case '/tailwind-test':
-      return <TailwindTest />
     default:
       return <NotFound pathname={pathname} />
   }
