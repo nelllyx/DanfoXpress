@@ -24,21 +24,37 @@ export default function NavBar() {
 
   return (
     <header className="sticky top-0 z-10 border-b border-black/10 bg-white/70 backdrop-blur">
-      <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3">
+      <div className="w-full flex items-center justify-between px-8 py-3">
         <Link
           to="/"
-          className="font-heading text-lg font-semibold tracking-tight text-black"
+          className="flex items-center gap-2 ml-4 mr-12"
+          style={{ textDecoration: 'none' }}
         >
-          DanfoXpress
+          <span
+            className="text-2xl font-extrabold font-heading tracking-widest"
+            style={{ color: '#FFC107', letterSpacing: '0.15em', fontFamily: 'Montserrat, sans-serif' }}
+          >
+            DanfoXpress
+          </span>
         </Link>
-
-        <nav className="flex items-center gap-2">
+        <nav className="flex items-center gap-8 mr-2">
           <NavItem to="/" label="Home" activePath={pathname} />
-          <NavItem to="/signup" label="Sign up" activePath={pathname} />
-          <NavItem to="/login" label="Log in" activePath={pathname} />
+          <NavItem to="/about" label="About" activePath={pathname} />
+          <NavItem to="/pricing" label="Pricing" activePath={pathname} />
+          <Link
+            to="/signup"
+            className="rounded-xl bg-[#FFC107] px-6 py-3 text-base font-semibold text-black shadow transition-colors hover:bg-yellow-400"
+          >
+            Get Started
+          </Link>
+          <Link
+            to="/login"
+            className="rounded-xl border border-black/10 bg-white px-6 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5"
+          >
+            Log in
+          </Link>
         </nav>
       </div>
     </header>
   )
 }
-

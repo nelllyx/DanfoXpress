@@ -17,29 +17,13 @@ export default function Landing() {
     <div className="flex flex-col gap-6 pt-4">
       {/* Full-bleed hero: animation spans viewport width while nav stays centered */}
       <section className="relative left-1/2 right-1/2 -mx-[50vw] w-screen max-w-[100vw] overflow-x-hidden">
-        <div className="mx-auto w-full max-w-3xl px-4 py-2">
-          <h1 className="mb-1 text-center font-heading text-3xl font-bold tracking-tight text-black sm:text-4xl">
-            Move Smart Across Lagos
-          </h1>
-        </div>
         <DanfoHeroAnimation />
-        <div className="mx-auto mt-2 flex w-full max-w-3xl flex-col gap-3 px-4 sm:flex-row sm:justify-center">
-          <Link
-            to="/signup"
-            className="inline-flex items-center justify-center rounded-xl bg-primary-yellow px-5 py-3 text-sm font-semibold text-black shadow-[0_10px_30px_rgba(15,23,42,0.08)] transition-colors hover:bg-primary-yellow/90"
-          >
-            Create account
-          </Link>
-          <Link
-            to="/login"
-            className="inline-flex items-center justify-center rounded-xl border border-black/10 bg-white px-5 py-3 text-sm font-semibold text-black/80 transition-colors hover:bg-black/5"
-          >
-            Log in
-          </Link>
-        </div>
       </section>
 
       <section className="grid gap-4 sm:grid-cols-3">
+        <h2 className="col-span-3 mb-2 text-center font-heading text-2xl font-bold tracking-tight text-black" style={{ color: '#000', fontFamily: 'Montserrat, sans-serif' }}>
+          Move smart across Lagos
+        </h2>
         <Stat label="Fast matching" value="~2 mins" />
         <Stat label="Affordable fares" value="Upfront" />
         <Stat label="Safe rides" value="Verified drivers" />
