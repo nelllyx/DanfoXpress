@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+
+/* Tailwind v4 uses a CSS-first theme.
+   Defining design tokens here ensures classes like `bg-primary-yellow`
+   and `text-accent-red` are generated correctly. */
+@theme {
+  --color-primary-yellow: #ffc107;
+  --color-accent-red: #ff3d00;
+  --color-road-gray: #2f2f2f;
+  --color-sky-blue: #87ceeb;
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  --font-sans: Poppins, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Arial, sans-serif;
+  --font-heading: Montserrat, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    height: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    background: #ffffff;
+    color: #000000;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
