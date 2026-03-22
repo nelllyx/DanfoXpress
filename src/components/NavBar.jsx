@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { usePathname } from '../router/usePathname.js'
 import Link from '../router/Link.jsx'
 
@@ -21,40 +22,74 @@ function NavItem({ to, label, activePath }) {
 
 export default function NavBar() {
   const pathname = usePathname()
+  const [menuOpen, setMenuOpen] = useState(false)
 
   return (
     <header className="sticky top-0 z-10 border-b border-black/10 bg-white/70 backdrop-blur">
-      <div className="w-full flex items-center justify-between px-8 py-3">
+      <div className="w-full flex items-center justify-between px-4 sm:px-8 py-3">
         <Link
           to="/"
-          className="flex items-center gap-2 ml-4 mr-12"
+          className="flex items-center gap-2 ml-2 sm:ml-4 mr-4 sm:mr-12"
           style={{ textDecoration: 'none' }}
         >
           <span
-            className="text-2xl font-extrabold font-heading tracking-widest"
+            className="text-xl sm:text-2xl font-extrabold font-heading tracking-widest"
             style={{ color: '#FFC107', letterSpacing: '0.15em', fontFamily: 'Montserrat, sans-serif' }}
           >
             DanfoXpress
           </span>
         </Link>
-        <nav className="flex items-center gap-8 mr-2">
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-4 lg:gap-8 mr-2">
           <NavItem to="/" label="Home" activePath={pathname} />
           <NavItem to="/about" label="About" activePath={pathname} />
           <NavItem to="/pricing" label="Pricing" activePath={pathname} />
           <Link
             to="/signup"
-            className="rounded-xl bg-[#FFC107] px-6 py-3 text-base font-semibold text-black shadow transition-colors hover:bg-yellow-400"
+            className="rounded-xl bg-[#FFC107] px-5 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-black shadow transition-colors hover:bg-yellow-400"
           >
             Get Started
           </Link>
           <Link
             to="/login"
-            className="rounded-xl border border-black/10 bg-white px-6 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5"
+            className="rounded-xl border border-black/10 bg-white px-5 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-black transition-colors hover:bg-black/5"
           >
             Log in
           </Link>
         </nav>
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden flex items-center px-2 py-2 rounded focus:outline-none focus:ring-2 focus:ring-black/20"
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label="Open menu"
+        >
+          <svg className="h-7 w-7 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-white/95 backdrop-blur border-t border-black/10 px-4 py-4 flex flex-col gap-2 shadow-lg">
+          <NavItem to="/" label="Home" activePath={pathname} />
+          <NavItem to="/about" label="About" activePath={pathname} />
+          <NavItem to="/pricing" label="Pricing" activePath={pathname} />
+          <Link
+            to="/signup"
+            className="rounded-xl bg-[#FFC107] px-5 py-3 text-base font-semibold text-black shadow transition-colors hover:bg-yellow-400"
+            onClick={() => setMenuOpen(false)}
+          >
+            Get Started
+          </Link>
+          <Link
+            to="/login"
+            className="rounded-xl border border-black/10 bg-white px-5 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5"
+            onClick={() => setMenuOpen(false)}
+          >
+            Log in
+          </Link>
+        </div>
+      )}
     </header>
   )
 }
