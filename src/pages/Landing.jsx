@@ -19,7 +19,7 @@ export default function Landing() {
     <div className="flex flex-col gap-6 pt-0">
       <section>
         <div>
-          <div className="pb-10 pt-10 text-center sm:pb-12 sm:pt-14">
+          <div className="pb-10 pt-10 text-center sm:pb-12 sm:pt-14 px-4 sm:px-8 md:px-16 lg:px-32">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-black/45">
               Eko · On-demand shuttles
             </p>
@@ -44,7 +44,7 @@ export default function Landing() {
               with verified drivers, upfront pricing, and matching that respects your time.
             </p>
 
-            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+            <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4 w-full max-w-xl mx-auto">
               <Link
                 to="/signup"
                 className="inline-flex min-h-12 w-full items-center justify-center rounded-2xl bg-black px-8 text-base font-semibold text-white shadow-lg shadow-black/15 transition hover:bg-black/90 sm:w-auto"
@@ -64,13 +64,13 @@ export default function Landing() {
             </p>
           </div>
 
-          <div className="relative mt-2">
+          <div className="relative mt-2 px-2 sm:px-8 md:px-16 lg:px-32">
             <DanfoHeroAnimation />
           </div>
         </div>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-3">
+      <section className="grid gap-4 sm:grid-cols-3 px-4 sm:px-8 md:px-16 lg:px-32">
         <h2 className="col-span-3 mb-2 text-center font-heading text-2xl font-bold tracking-tight text-black">
           Move smart across Lagos
         </h2>
