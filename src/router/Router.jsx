@@ -3,6 +3,7 @@ import Login from '../pages/Login.jsx'
 import Signup from '../pages/Signup.jsx'
 import About from '../pages/About.jsx'
 import Pricing from '../pages/Pricing.jsx'
+import RouteFinder from '../pages/RouteFinder.jsx'
 import { usePathname } from './usePathname.js'
 
 function NotFound({ pathname }) {
@@ -33,8 +34,9 @@ export default function Router() {
       return <About />
     case '/pricing':
       return <Pricing />
+    case '/route-finder':
+      return <RouteFinder />
     default:
       return <NotFound pathname={pathname} />
   }
 }
-
