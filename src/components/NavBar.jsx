@@ -2,12 +2,12 @@ import { useState } from 'react'
 import { usePathname } from '../router/usePathname.js'
 import Link from '../router/Link.jsx'
 
-function NavItem({ to, label, activePath }) {
+function NavItem({ to, label, activePath, onNavigate }) {
   const isActive = activePath === to
-
   return (
     <Link
       to={to}
+      onClick={onNavigate}
       className={[
         'rounded-xl px-3 py-2 text-sm font-medium transition-colors',
         isActive
@@ -24,6 +24,9 @@ export default function NavBar() {
   const pathname = usePathname()
   const [menuOpen, setMenuOpen] = useState(false)
 
+  // Helper to close menu on nav item click (mobile only)
+  const handleNav = () => setMenuOpen(false)
+
   return (
     <header className="sticky top-0 z-10 border-b border-black/10 bg-white/70 backdrop-blur">
       <div className="w-full flex items-center justify-between px-4 sm:px-8 py-3">
@@ -31,6 +34,7 @@ export default function NavBar() {
           to="/"
           className="flex items-center gap-2 ml-2 sm:ml-4 mr-4 sm:mr-12"
           style={{ textDecoration: 'none' }}
+          onClick={handleNav}
         >
           <span
             className="text-xl sm:text-2xl font-extrabold font-heading tracking-widest"
@@ -72,21 +76,21 @@ export default function NavBar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-white/95 backdrop-blur border-t border-black/10 px-4 py-4 flex flex-col gap-2 shadow-lg">
-          <NavItem to="/" label="Home" activePath={pathname} />
-          <NavItem to="/about" label="About" activePath={pathname} />
-          <NavItem to="/pricing" label="Pricing" activePath={pathname} />
-          <NavItem to="/route-finder" label="Route Finder" activePath={pathname} />
+          <NavItem to="/" label="Home" activePath={pathname} onNavigate={handleNav} />
+          <NavItem to="/about" label="About" activePath={pathname} onNavigate={handleNav} />
+          <NavItem to="/pricing" label="Pricing" activePath={pathname} onNavigate={handleNav} />
+          <NavItem to="/route-finder" label="Route Finder" activePath={pathname} onNavigate={handleNav} />
           <Link
             to="/signup"
             className="rounded-xl bg-[#FFC107] px-5 py-3 text-base font-semibold text-black shadow transition-colors hover:bg-yellow-400"
-            onClick={() => setMenuOpen(false)}
+            onClick={handleNav}
           >
             Get Started
           </Link>
           <Link
             to="/login"
             className="rounded-xl border border-black/10 bg-white px-5 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5"
-            onClick={() => setMenuOpen(false)}
+            onClick={handleNav}
           >
             Log in
           </Link>
