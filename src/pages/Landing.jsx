@@ -1,5 +1,6 @@
 import Link from '../router/Link.jsx'
 import DanfoHeroAnimation from '../components/DanfoHeroAnimation.jsx'
+import RouteFinder from './RouteFinder.jsx'
 
 function Stat({ label, value }) {
   return (
@@ -16,35 +17,39 @@ const hoods = ['Yaba', 'VI', 'Lekki', 'Ikeja', 'CMS']
 
 const steps = [
   {
-    title: 'Pick route & time',
-    body: "Enter where you're going and when you need to leave. See the fare before you commit.",
+    title: 'Estimate your fare',
+    body: 'Pick your start and destination. You’ll see the estimated subsidized fee before you board.',
   },
   {
-    title: 'Get matched',
-    body: 'We pair you with a verified driver and a shuttle heading your way — usually within minutes.',
+    title: 'Tap Lagos Card at entry',
+    body: 'At the entrance, scan your Lagos Card. Transport is deducted instantly for a seamless ride.',
   },
   {
-    title: 'Ride & arrive',
-    body: 'Hop on, track progress in-app, and pay the price you saw — no haggling at the door.',
+    title: 'Ride electric buses',
+    body: 'These are electric buses — designed to reduce dependency on fuel and cushion hardship from fuel increments.',
+  },
+  {
+    title: 'Top up in the app',
+    body: 'If your credit runs out, top up inside the application whenever you need to keep moving.',
   },
 ]
 
 const benefits = [
   {
-    title: 'Upfront pricing',
-    body: 'Know the cost before you book. No surprise “last-minute” charges.',
+    title: 'Estimated fee upfront',
+    body: 'Commuters know the expected cost to their destination before stepping into the bus.',
   },
   {
-    title: 'Verified drivers',
-    body: 'Drivers and vehicles are checked so you can ride with more peace of mind.',
+    title: 'Seamless Lagos Card payment',
+    body: 'Just scan your Lagos Card at the entrance — deductions are fast, making boarding smoother.',
   },
   {
-    title: 'Built for traffic reality',
-    body: 'Routing and matching tuned for Lagos roads — mainland, island, and the bridges between.',
+    title: 'Electric routes that cushion fuel hardship',
+    body: 'Electric buses reduce dependency on fuel, helping stabilize commutes during fuel price pressure.',
   },
   {
-    title: 'Shared, not chaotic',
-    body: 'Shuttle-style pooling that keeps fares lower and still respects your time.',
+    title: 'Navigation for new arrivals',
+    body: 'New in Lagos? Get guided routes without the stress of figuring the city out alone.',
   },
 ]
 
@@ -101,13 +106,88 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* New in Lagos: estimated fare + route guidance */}
+      <section className="pt-4 sm:pt-8" aria-labelledby="navigation-heading">
+        <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-yellow">
+              New in Lagos?
+            </p>
+            <h2
+              id="navigation-heading"
+              className="mt-2 font-heading text-2xl font-bold tracking-tight text-eko-navy sm:text-3xl"
+            >
+              Estimate your fee and find the right route
+            </h2>
+            <p className="mt-3 text-base text-black/65">
+              The subsidized electric buses show an estimated fee upfront. When you arrive, tap your Lagos Card at the entrance — the transport is deducted automatically.
+            </p>
+
+            <div className="mt-6 grid gap-4 sm:grid-cols-2">
+              <div className="rounded-2xl border border-black/10 bg-white/80 p-5">
+                <div className="text-sm font-semibold text-eko-navy">Upfront estimate</div>
+                <div className="mt-1 text-sm text-black/65">Know the cost before boarding.</div>
+              </div>
+              <div className="rounded-2xl border border-black/10 bg-white/80 p-5">
+                <div className="text-sm font-semibold text-eko-navy">Tap-to-pay</div>
+                <div className="mt-1 text-sm text-black/65">Scan Lagos Card at entry.</div>
+              </div>
+            </div>
+          </div>
+
+          <RouteFinder />
+        </div>
+      </section>
+
+      {/* Subsidized electric bus features */}
+      <section className="pt-16 sm:pt-20" aria-labelledby="service-heading">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-yellow">
+            Subsidized electric buses
+          </p>
+          <h2 id="service-heading" className="mt-2 font-heading text-2xl sm:text-3xl font-bold text-black">
+            Designed for fuel hardship and seamless payment
+          </h2>
+          <p className="mt-4 text-black/70 text-base sm:text-lg">
+            Electric buses reduce dependency on fuel. Riders see an estimated fee, tap Lagos Card at the entrance for instant deduction, and can top up in the app whenever credit is low.
+          </p>
+
+          <div className="mx-auto mt-12 grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="rounded-2xl border border-black/10 bg-white/80 p-6 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+              <div className="text-sm font-semibold text-eko-navy">Electric, not fuel-driven</div>
+              <p className="mt-2 text-sm leading-relaxed text-black/65">
+                The routes are powered electrically, so commutes are less affected by fuel price pressure.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-black/10 bg-white/80 p-6 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+              <div className="text-sm font-semibold text-eko-navy">Estimated fee upfront</div>
+              <p className="mt-2 text-sm leading-relaxed text-black/65">
+                Know what you’ll pay before you board — built for confidence at the gate.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-black/10 bg-white/80 p-6 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+              <div className="text-sm font-semibold text-eko-navy">Tap Lagos Card at entry</div>
+              <p className="mt-2 text-sm leading-relaxed text-black/65">
+                Scan at the entrance. Fare is deducted automatically so boarding stays fast.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-black/10 bg-white/80 p-6 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+              <div className="text-sm font-semibold text-eko-navy">Top up in the app</div>
+              <p className="mt-2 text-sm leading-relaxed text-black/65">
+                Refill your Lagos Card credit directly from the application.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="grid gap-4 sm:grid-cols-3">
         <h2 className="col-span-1 mb-2 text-center font-heading text-xl font-bold tracking-tight text-black sm:col-span-3 sm:text-2xl">
-          Move smart across Lagos
+          Seamless commute, subsidized by design
         </h2>
-        <Stat label="Fast matching" value="~2 mins" />
-        <Stat label="Affordable fares" value="Upfront" />
-        <Stat label="Safe rides" value="Verified drivers" />
+        <Stat label="Estimated fare" value="Shown upfront" />
+        <Stat label="Lagos Card tap-to-pay" value="Scan at entrance" />
+        <Stat label="Top up credit" value="In the app" />
       </section>
 
       <section
@@ -116,20 +196,20 @@ export default function Landing() {
       >
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-yellow">
-            Simple steps
+            Seamless boarding flow
           </p>
           <h2
             id="how-it-works-heading"
             className="mt-2 font-heading text-2xl font-bold tracking-tight text-eko-navy sm:text-3xl"
           >
-            How it works
+            Tap, ride, top up
           </h2>
           <p className="mt-3 text-base text-black/65">
-            From booking to drop-off — built to feel as straightforward as flagging a danfo, without the guesswork.
+            See the estimated fee, scan your Lagos Card at the entrance, then ride electric — with top-ups built in.
           </p>
         </div>
 
-        <ol className="mt-12 grid gap-10 sm:grid-cols-3 sm:gap-8">
+        <ol className="mt-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 sm:gap-8">
           {steps.map((step, i) => (
             <li key={step.title} className="flex flex-col items-center text-center sm:items-stretch sm:text-left">
               <div className="flex flex-col items-center sm:flex-row sm:gap-4">
@@ -155,13 +235,13 @@ export default function Landing() {
       >
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.2em] text-primary-yellow">
-            Why riders choose us
+            Why riders choose this program
           </p>
           <h2 id="why-heading" className="mt-2 font-heading text-2xl font-bold tracking-tight text-eko-navy sm:text-3xl">
-            Built for how Lagos moves
+            Electric rides with Lagos Card tap-to-pay
           </h2>
           <p className="mt-3 text-base text-black/65">
-            The things that matter on crowded roads and long bridge runs — in one place.
+            Clear estimates upfront, faster boarding with card tap at the entrance, and electric routes designed to cushion fuel hardship.
           </p>
         </div>
 

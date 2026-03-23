@@ -44,6 +44,7 @@ export default function NavBar() {
           <NavItem to="/" label="Home" activePath={pathname} />
           <NavItem to="/about" label="About" activePath={pathname} />
           <NavItem to="/pricing" label="Pricing" activePath={pathname} />
+          <NavItem to="/route-finder" label="Route Finder" activePath={pathname} />
           <Link
             to="/signup"
             className="rounded-xl bg-[#FFC107] px-5 py-2 sm:px-6 sm:py-3 text-sm sm:text-base font-semibold text-black shadow transition-colors hover:bg-yellow-400"
@@ -74,6 +75,7 @@ export default function NavBar() {
           <NavItem to="/" label="Home" activePath={pathname} />
           <NavItem to="/about" label="About" activePath={pathname} />
           <NavItem to="/pricing" label="Pricing" activePath={pathname} />
+          <NavItem to="/route-finder" label="Route Finder" activePath={pathname} />
           <Link
             to="/signup"
             className="rounded-xl bg-[#FFC107] px-5 py-3 text-base font-semibold text-black shadow transition-colors hover:bg-yellow-400"
