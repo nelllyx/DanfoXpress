@@ -2,12 +2,13 @@ import { useState } from 'react'
 import { usePathname } from '../router/usePathname.js'
 import Link from '../router/Link.jsx'
 
-function NavItem({ to, label, activePath }) {
+function NavItem({ to, label, activePath, onNavigate }) {
   const isActive = activePath === to
 
   return (
     <Link
       to={to}
+      onClick={onNavigate}
       className={[
         'rounded-xl px-3 py-2 text-sm font-medium transition-colors',
         isActive
@@ -26,10 +27,10 @@ export default function NavBar() {
 
   return (
     <header className="sticky top-0 z-10 border-b border-black/10 bg-white/70 backdrop-blur">
-      <div className="w-full flex items-center justify-between px-4 sm:px-8 py-3">
+      <div className="layout-shell flex items-center justify-between gap-4 py-3">
         <Link
           to="/"
-          className="flex items-center gap-2 ml-2 sm:ml-4 mr-4 sm:mr-12"
+          className="flex min-w-0 shrink-0 items-center gap-2"
           style={{ textDecoration: 'none' }}
         >
           <span
@@ -40,7 +41,7 @@ export default function NavBar() {
           </span>
         </Link>
         {/* Desktop nav */}
-        <nav className="hidden md:flex items-center gap-4 lg:gap-8 mr-2">
+        <nav className="hidden md:flex shrink-0 items-center gap-4 lg:gap-8">
           <NavItem to="/" label="Home" activePath={pathname} />
           <NavItem to="/about" label="About" activePath={pathname} />
           <NavItem to="/pricing" label="Pricing" activePath={pathname} />
@@ -70,24 +71,41 @@ export default function NavBar() {
       </div>
       {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white/95 backdrop-blur border-t border-black/10 px-4 py-4 flex flex-col gap-2 shadow-lg">
-          <NavItem to="/" label="Home" activePath={pathname} />
-          <NavItem to="/about" label="About" activePath={pathname} />
-          <NavItem to="/pricing" label="Pricing" activePath={pathname} />
-          <Link
-            to="/signup"
-            className="rounded-xl bg-[#FFC107] px-5 py-3 text-base font-semibold text-black shadow transition-colors hover:bg-yellow-400"
-            onClick={() => setMenuOpen(false)}
-          >
-            Get Started
-          </Link>
-          <Link
-            to="/login"
-            className="rounded-xl border border-black/10 bg-white px-5 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5"
-            onClick={() => setMenuOpen(false)}
-          >
-            Log in
-          </Link>
+        <div className="md:hidden border-t border-black/10 bg-white/95 shadow-lg backdrop-blur">
+          <div className="layout-shell flex flex-col gap-2 py-4">
+            <NavItem
+              to="/"
+              label="Home"
+              activePath={pathname}
+              onNavigate={() => setMenuOpen(false)}
+            />
+            <NavItem
+              to="/about"
+              label="About"
+              activePath={pathname}
+              onNavigate={() => setMenuOpen(false)}
+            />
+            <NavItem
+              to="/pricing"
+              label="Pricing"
+              activePath={pathname}
+              onNavigate={() => setMenuOpen(false)}
+            />
+            <Link
+              to="/signup"
+              className="rounded-xl bg-[#FFC107] px-5 py-3 text-base font-semibold text-black shadow transition-colors hover:bg-yellow-400"
+              onClick={() => setMenuOpen(false)}
+            >
+              Get Started
+            </Link>
+            <Link
+              to="/login"
+              className="rounded-xl border border-black/10 bg-white px-5 py-3 text-base font-semibold text-black transition-colors hover:bg-black/5"
+              onClick={() => setMenuOpen(false)}
+            >
+              Log in
+            </Link>
+          </div>
         </div>
       )}
     </header>
